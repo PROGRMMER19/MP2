@@ -148,7 +148,7 @@ void userValidation(string& input) {
 }
 
 void regAccount() {
-	bool usernameSuccess = false, passwordSuccess = false, ageSuccess = false, utypeSuccess = false;
+	bool usernameSuccess, passwordSuccess, ageSuccess = false, utypeSuccess = false;
 	string regUsername, regPassword, regUtype, regMember;
 	int passwordLength = 8, acceptedAge = 20, regAge;
 	ofstream usersFile;
@@ -158,6 +158,7 @@ void regAccount() {
 		cin >> regUsername;
 		for (char u : regUsername) {
 			if (!isalpha(u)) {
+				usernameSuccess = false;
 				break;
 			}else {
 				usernameSuccess = true;
@@ -175,6 +176,7 @@ void regAccount() {
 		cin >> regPassword;
 		for (char p : regPassword) {
 			if (!(isalnum(p) || ispunct(p)) || regPassword.length() < passwordLength) {
+				passwordSuccess = false;
 				break;
 			}else {
 				passwordSuccess = true;
